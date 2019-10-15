@@ -1,31 +1,46 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <div id="app" :class="$style.mainContent">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <main-nav />
     <router-view />
+    <footer :class="$style.footer">
+    <div class="content has-text-centered">
+      <p>
+        &copy; 2019.
+      </p>
+    </div>
+  </footer>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+  import MainNav from '@/components/Layout/MainNav'
+  export default {
+    components: {
+      MainNav
+    },
+    data() {
+      return{
+      }
+    },
+  };
+</script>
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+<style module>
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.mainContent {
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 168px; /* height of your footer */
 }
+.footer {
+ position: absolute;
+ bottom: 0;
+ width: 100%;
+}
+</style>
+<style lang="sass">
+  @import "~bulma/bulma.sass"
 </style>
